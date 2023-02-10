@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Дано масив з елементами різних типів. 
+        //Створити функцію яка вираховує середнє арифметичне лише числових елементів даного масиву.
+        function absArr(arr) {
+            let sum = 0;
+            let count = 1;
+            for (let i = 0; i < arr.length; i++) {
+                if (typeof arr[i] == 'number') {
+                    sum += arr[i];
+                    count++;
+                }
+            }
+            return (sum / count).toFixed(3);
+        }
+        console.log(absArr([0, 1, 2, 3, 'a', 5, null, 6, 7, undefined, 8, [1, 2, 3, 4]]));
+
+        // //Написати функцію doMath(x, znak, y), яка отримує 3 аргументи: числа x і y, рядок znak. 
+        // //У змінній znak може бути: +, -, *, /, %, ^ (ступінь ).
+        // //Вивести результат математичної дії, вказаної в змінній znak.
+        // //Обидва числа і знак виходять від користувача.
+
+        let x = prompt("task 1---enter digit1");
+        let y = prompt("task 1---enter digit2");
+        let action = prompt("task 1---choose action");
+
+        function doMathObject(x, action, y) {
+            const actions = {
+                add: (x, y) => x + y,
+                subtract: (x, y) => x - y,
+                multiply: (x, y) => x * y,
+                divide: (x, y) => x / y,
+                percent: (x, y) => x % y,
+                exp: (x, y) => result = Math.pow(x, y),
+            };
+
+            return actions[action]?.(x, y) ?? "Calculation is not recognised";
+        }
+        // //если использовать математические действия, то не получится сделать ключ-значение
+
+        function doMathSwitch(x, action, y) {
+            switch (action) {
+                case "+":
+                    return x + y;
+                    break;
+                case "-":
+                    return x - y;
+                    break;
+                case "*":
+                    return x * y;
+                    break;
+                case "/":
+                    return x / y;
+                    break;
+                case "%":
+                    return x % y;
+                    break;
+
+                case "^":
+                    return Math.pow(x, y);
+                    break;
+                default:
+                    console.log("Что то пошло не так");
+            }
+        }
+
+        console.log(doMathObject(x, action, y));
+        console.log(doMathSwitch(x, action, y));
+
+        //Написати функцію заповнення даними користувача двомірного масиву. 
+        //Довжину основного масиву і внутрішніх масивів задає користувач. 
+        //Значення всіх елементів всіх масивів задає користувач.    
+
+        function fillArray() {
+
+            let extLength = prompt("external array length");
+            let intLength = prompt("internal array length");
+            let value;
+
+            let extArray = new Array(parseInt(extLength));
+            let intArray = new Array(parseInt(intLength));
+
+            for (let i = 0; i < extArray.length; i++) {
+                value = prompt("choose value of current element");
+                extArray[i] = intArray.fill(value, 0, intArray.length);
+                console.log(extArray[i]);
+            }
+            return extArray;
+        }
+        console.log(fillArray());
+
+        //Створити функцію, яка прибирає з рядка всі символи, які ми передали другим аргументом. 
+        //'func(" hello world", ['l', 'd'])' поверне нам "heo wor". 
+        //Вихідний рядок та символи для видалення задає користувач.
+
+        function removeSymbols(string, array) {
+            
+            let stringArray = string.split('');
+            const result = [];
+
+            for (let i = 0; i < stringArray.length; i += 1) {
+
+                if (!array.includes(stringArray[i])) {
+                    result.push(stringArray[i]);
+                }
+            }
+            let newString = result.join('');
+            return newString;
+
+
+        }
+
+        let string=prompt("enter string");
+        let input=prompt("enter array like string");
+        let array=input.split('');
+        console.log(removeSymbols(string, array));
+
+
+
+    </script>
+</body>
+
+</html>
