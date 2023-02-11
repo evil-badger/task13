@@ -92,11 +92,16 @@
 
             for (let i = 0; i < extArray.length; i++) {
                 value = prompt("choose value of current element");
-                extArray[i] = intArray.fill(value, 0, intArray.length);
-                console.log(extArray[i]);
+                extArray[i]=fillInnerArray(value, intLength);
             }
             return extArray;
         }
+
+        const fillInnerArray = (value, intLength) => {
+            let intArray = new Array(parseInt(intLength));
+            return intArray.fill(value, 0, intArray.length)
+        }
+
         console.log(fillArray());
 
         //Створити функцію, яка прибирає з рядка всі символи, які ми передали другим аргументом. 
@@ -104,7 +109,7 @@
         //Вихідний рядок та символи для видалення задає користувач.
 
         function removeSymbols(string, array) {
-            
+
             let stringArray = string.split('');
             const result = [];
 
@@ -116,13 +121,11 @@
             }
             let newString = result.join('');
             return newString;
-
-
         }
 
-        let string=prompt("enter string");
-        let input=prompt("enter array like string");
-        let array=input.split('');
+        let string = prompt("enter string");
+        let input = prompt("enter array like string");
+        let array = input.split('');
         console.log(removeSymbols(string, array));
 
 
